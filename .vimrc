@@ -9,7 +9,9 @@
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Source (modified): https://github.com/nikolalsvk/dotfiles/blob/master/.vimrc
+" Sources (modified):
+"                     https://github.com/nikolalsvk/dotfiles/blob/master/.vimrc
+"                     https://thoughtbot.com/blog/modern-typescript-and-react-development-in-vim
 " About: https://pragmaticpineapple.com/ultimate-vim-typescript-setup/
 " Tutorial: https://www.freecodecamp.org/news/vimrc-configuration-guide-customize-your-vim-editor/
 
@@ -30,8 +32,9 @@ call plug#begin()
 
   Plug 'pangloss/vim-javascript'    " JavaScript support
   Plug 'leafgarland/typescript-vim' " TypeScript syntax
-  Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
-  Plug 'jparise/vim-graphql'        " GraphQL syntax
+"  Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
+"  Plug 'peitalin/vim-jsx-typescript' " TSX syntax
+"  Plug 'jparise/vim-graphql'        " GraphQL syntax
   Plug 'styled-components/vim-styled-components'
   Plug 'mattn/emmet-vim'            " HTML & CSS shortcuts
 
@@ -55,6 +58,7 @@ set showcmd " Show pressed keys in bottom right
 
 " Look and Feel settings
 syntax enable
+" syntax sync fromstart
 set background=dark
 set wildmenu " when opening a file with e.g. :e ~/.vim<TAB> there is a graphical menu of all the matches
 set ttyfast
@@ -193,11 +197,6 @@ let g:coc_global_extensions = [  'coc-tsserver', 'coc-json',
                                \ 'coc-html', 'coc-css', '@yaegassy/coc-tailwindcss3',
                                \ 'coc-markdownlint', '@yaegassy/coc-nginx']
 
-" Add CoC Prettier if prettier is installed
-if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
-  let g:coc_global_extensions += ['coc-prettier']
-endif
-
 " Add CoC ESLint if ESLint is installed
 if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
   let g:coc_global_extensions += ['coc-eslint']
@@ -211,18 +210,23 @@ inoremap <silent><expr> <TAB>
       \ coc#refresh()
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
+" Tab should behave normally if no suggestions
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
 nmap gd <Plug>(coc-definition)
 nmap gy <Plug>(coc-type-definition)
 nmap gi <Plug>(coc-implementation)
 nmap gr <Plug>(coc-references)
+nmap [g <Plug>(coc-diagnostic-prev)
+nmap ]g <Plug>(coc-diagnostic-next)
 
+" Display documentation
+nnoremap K :call CocAction('doHover')<CR>
 " Remap keys for applying codeAction to the current buffer.
 nmap <leader>c  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Format
-nmap <leader>f   :CocCommand prettier.formatFile<CR>
 
 " Fix some weird error with Fugitive
 let g:fugitive_pty = 0
