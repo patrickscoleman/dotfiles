@@ -113,6 +113,8 @@ let g:user_emmet_install_global = 0
 autocmd FileType html,css,svelte EmmetInstall
 
 " +++ Shortcuts +++
+" Open/create new file
+nnoremap <leader>e :e<space>
 " Open Buffer
 nnoremap <leader>l :Buffers<CR>
 " Open test file for a current file
