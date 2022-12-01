@@ -147,9 +147,11 @@ nnoremap <leader>rn :set relativenumber!<cr>
 let NERDTreeShowHidden=1 " always show hidden files
 nnoremap <leader>t :NERDTreeToggle<CR>
 
-" Map fzf search to CTRL T
+" Map fzf file name search to ctrl+t
 nnoremap <C-t> :Files<Cr>
-" Map fzf + ripgrep (rg) search to CTRL G
+" ctrl+y to only search the directory of the currently edited file
+nnoremap <C-y> :Files <C-r>=expand("%:h")<CR>/<Cr>
+" Map fzf + ripgrep (rg) file content search to ctrl+g
 nnoremap <C-g> :Rg <Cr>
 
 " vim-test shortcut for running tests
