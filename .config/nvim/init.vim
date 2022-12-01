@@ -67,7 +67,7 @@ set noerrorbells visualbell t_vb=
 
 " Ack tricks
 let g:ackprg = 'rg --vimgrep --smart-case --hidden'
-" Any empty ack search will search for the work the cursor is on
+" Any empty ack search will search for the word the cursor is on
 let g:ack_use_cword_for_empty_search = 1
 nmap <leader>a :Ack!<Space>
 nmap <leader>A :Ack! <cword><CR>
