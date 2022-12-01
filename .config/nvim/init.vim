@@ -151,8 +151,10 @@ nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <C-t> :Files<Cr>
 " ctrl+y to only search the directory of the currently edited file
 nnoremap <C-y> :Files <C-r>=expand("%:h")<CR>/<Cr>
-" Map fzf + ripgrep (rg) file content search to ctrl+g
-nnoremap <C-g> :Rg <Cr>
+" Map fzf + ripgrep (rg) file content search to space+g
+nnoremap <leader>g :Rg <Cr>
+" Map fzf git commits search to ctrl+g
+nnoremap <C-g> :Commits<CR>
 
 " vim-test shortcut for running tests
 nnoremap <leader>; :TestNearest<CR>
