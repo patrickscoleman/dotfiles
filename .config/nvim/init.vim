@@ -128,6 +128,7 @@ nnoremap <leader>/ :split<CR>
 nnoremap <leader>w :w!<CR>
 nnoremap <leader>q :q!<CR>
 nnoremap <leader>x :x<CR>
+nnoremap <leader>b :bd<CR>
 
 " Open Vim configuration file for editing
 nnoremap <leader>1 :e ~/.config/nvim/init.vim<CR>
