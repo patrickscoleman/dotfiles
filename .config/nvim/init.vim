@@ -1,5 +1,5 @@
 " PATRICK COLEMAN'S neovim config
-" last updated 2022.11.23
+" last updated 2022.11.30
 
 call plug#begin('~/.vim/plugged')
 
@@ -7,9 +7,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-fugitive'         " Git plugin :G more commands
   Plug 'tpope/vim-rhubarb'          " :GBrowse
 
-  Plug 'mileszs/ack.vim'            " Use ack in Vim
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Fuzzy search
-  Plug 'junegunn/fzf.vim'           " Set up fzf and fzf.vim
+  Plug 'mileszs/ack.vim'            " Frontend for ripgrep (rg) search in Vim
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " fzf fuzzy search
+  Plug 'junegunn/fzf.vim'           " Vim fzf commands
 
   Plug 'preservim/nerdtree'         " File explorer
   Plug 'ryanoasis/vim-devicons'     " Filetype icons
@@ -65,7 +65,7 @@ nmap z za
 " Disable all bells and whistles
 set noerrorbells visualbell t_vb=
 
-" Ack tricks
+" Use ripgrep (rg) instead of ack to search lines within files
 let g:ackprg = 'rg --vimgrep --smart-case --hidden'
 " Any empty ack search will search for the word the cursor is on
 let g:ack_use_cword_for_empty_search = 1
@@ -147,19 +147,14 @@ nnoremap <leader>rn :set relativenumber!<cr>
 let NERDTreeShowHidden=1 " always show hidden files
 nnoremap <leader>t :NERDTreeToggle<CR>
 
-" If fzf installed using git
-set rtp+=~/.fzf
-" Map fzf search to CTRL P
-nnoremap <C-p> :GFiles<Cr>
-" Map fzf + ag search to CTRL G
+" Map fzf search to CTRL T
+nnoremap <C-t> :Files<Cr>
+" Map fzf + ripgrep (rg) search to CTRL G
 nnoremap <C-g> :Rg <Cr>
 
 " vim-test shortcut for running tests
 nnoremap <leader>; :TestNearest<CR>
 nnoremap <leader>' :TestFile<CR>
-
-" Open file explorer in current folder. Extra <CR> is for disabling /"Press ENTER or type command to continue/"
-nnoremap <silent><leader>e :Exp<CR><CR>
 
 " Easier movement between split windows CTRL + {h, j, k, l}
 nnoremap <c-h> <c-w>h
