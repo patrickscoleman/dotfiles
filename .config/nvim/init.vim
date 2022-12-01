@@ -19,8 +19,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'mattn/emmet-vim'            " HTML & CSS shortcuts
   Plug 'tpope/vim-characterize'     " Shows additional character & emoji data on `ga`
 
-  Plug 'AndrewRadev/tagalong'       " Automatically change closing tags if you edit an opening tag and vice versa
-  Plug 'tpope/vim-surround'         " Edit quotes, parens, etc.
+  Plug 'tpope/vim-surround'         " Edit quotes, parens, html tags, etc.
   Plug 'tpope/vim-commentary'       " Edit comments
   Plug 'tpope/vim-unimpaired'       " Additional mappings
 
@@ -113,9 +112,6 @@ set backspace=indent,eol,start
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,svelte EmmetInstall
 
-" Display messages when tagalong automatically changes tags
-let g:tagalong_verbose = 1
-
 " +++ Shortcuts +++
 " Open Buffer
 nnoremap <leader>l :Buffers<CR>
@@ -166,6 +162,7 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 
+" +++ CoC Config +++
 " CoC extensions
 let g:coc_global_extensions = [  'coc-tsserver', 'coc-json',
                                \ 'coc-svelte',
