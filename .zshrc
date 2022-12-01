@@ -8,6 +8,19 @@ fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# Use fd instead of find with fzf
+export FZF_DEFAULT_OPTS=""
+export FZF_DEFAULT_COMMAND='fd --type f --color=never'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND='fd --type d . --color=never'
+
+# Display file previews with bat when using fzf
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :500 {}'"
+
+# Enable directory previews with tree
+# Note: esc+c works in addition to alt+c
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -100'"
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -77,7 +90,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git fzf fzf-tab zsh-syntax-highlighting zsh-autosuggestions colored-man-pages)
 
 # Use nerd fonts with Powerlevel10k
 POWERLEVEL10K_MODE='nerdfont-complete'
@@ -114,7 +127,12 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Use Powerlevel10k
 source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Enable fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
