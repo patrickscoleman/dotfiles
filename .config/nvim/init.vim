@@ -53,7 +53,6 @@ set numberwidth=4 " number of spaces in the gutter
 
 " Paste mode
 nnoremap <leader>p :set invpaste paste?<CR>
-set pastetoggle=<Insert>
 set showmode
 
 " Folding
@@ -132,6 +131,14 @@ nnoremap <leader>w :w!<CR>
 nnoremap <leader>q :q!<CR>
 nnoremap <leader>x :x<CR>
 nnoremap <leader>b :bd<CR>
+
+" Automatically add closing brackets
+inoremap ( ()<Left>
+inoremap [ []<Left>
+inoremap { {}<Left>
+
+" Do not automatically comment out new lines after a comment
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Open Vim configuration file for editing
 nnoremap <leader>1 :e ~/.config/nvim/init.vim<CR>
