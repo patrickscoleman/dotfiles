@@ -135,7 +135,7 @@ nnoremap <leader>b :bd<CR>
 " Automatically add closing brackets
 inoremap ( ()<Left>
 inoremap [ []<Left>
-inoremap { {}<Left>
+inoremap { {<CR><CR>}<Up><Tab>
 
 " Do not automatically comment out new lines after a comment
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
