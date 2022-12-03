@@ -22,6 +22,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-surround'         " Edit quotes, parens, html tags, etc.
   Plug 'tpope/vim-commentary'       " Edit comments
   Plug 'tpope/vim-unimpaired'       " Additional mappings
+  Plug 'tpope/vim-eunuch'           " Vim sugar for UNIX shell commands
 
   Plug 'tpope/vim-dadbod'           " Query databases from any vim buffer
   Plug 'vim-test/vim-test'          " Multi-language testing
