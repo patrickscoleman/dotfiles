@@ -136,6 +136,9 @@ nnoremap <leader>b :bd<CR>
 inoremap ( ()<Left>
 inoremap [ []<Left>
 inoremap { {<CR>}<Esc>O
+" Avoid adding extra closing parens/brackets
+inoremap <expr> ) matchstr(getline('.'), '\%' . col('.') . 'c.')==')' ? '<Right>' : ')'
+inoremap <expr> ] matchstr(getline('.'), '\%' . col('.') . 'c.')==']' ? '<Right>' : ']'
 
 " Do not automatically comment out new lines after a comment
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
