@@ -7,8 +7,8 @@ alias finder="open ."
 alias chrome='open -a "Google Chrome"'
 
 # Editing Shortcuts
-alias zed="nvim ~/.zshrc"
-alias alied="nvim ~/.bash_aliases"
+alias zed="vim ~/.zshrc"
+alias alied="vim ~/.bash_aliases"
 
 # Git
 alias gs="git status"
