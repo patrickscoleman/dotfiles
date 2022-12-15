@@ -72,4 +72,5 @@ set clipboard^=unnamed,unnamedplus
 " Faster saving and exiting
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
+nnoremap <leader>Q :q!<CR>
 nnoremap <leader>x :x<CR>
