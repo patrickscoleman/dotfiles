@@ -12,3 +12,6 @@ alias alied="vim ~/.bash_aliases"
 
 # Git
 alias gs="git status"
+
+# nvm
+alias nn="nvm use default"
