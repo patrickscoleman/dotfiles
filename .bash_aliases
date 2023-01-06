@@ -13,7 +13,7 @@ alias alied="vim ~/.bash_aliases"
 
 # Git
 alias gs="git status"
-alias gan="git add --intent-to-add . && git add --patch"
+alias gapan="git add --intent-to-add . && git add --patch"
 
 # nvm
 alias nn="nvm use default"
